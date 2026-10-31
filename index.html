@@ -73,9 +73,6 @@
   .proj p{margin:0;color:var(--muted);max-width:40em}
   
   /* Publications */
-  .pubtools{display:flex;gap:8px;margin:0 0 22px;flex-wrap:wrap}
-  .pubtools button{font:500 .88rem var(--sans);border:1px solid var(--rule);background:#fff;color:var(--text);padding:6px 14px;border-radius:999px;cursor:pointer}
-  .pubtools button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
   .year{font:500 1.05rem var(--serif);color:var(--muted);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
   .year:first-of-type{margin-top:0}
   ol.pubs{list-style:none;margin:0;padding:0}
@@ -86,7 +83,6 @@
   .pub .a b{color:var(--text);font-weight:600}
   .pub .v{font-size:.88rem;color:var(--muted);font-style:italic}
   .award{display:block;margin-top:2px;font-size:.82rem;color:var(--award);font-weight:600}
-  .pub[hidden], .year[hidden]{display:none}
 
   /* Timeline (experience / education) */
   .tl{list-style:none;margin:0;padding:0}
@@ -128,7 +124,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="hero-text">
-      <h1>Jonghoon Kwon, Ph.D.</h1>
+      <h1>Jonghoon Kwon</h1>
       <p class="role">Senior Scientist, Network Security Group</p>
       <p class="aff">Institute of Information Security · Department of Computer Science · ETH Zürich</p>
       <p class="lede">I build networks that can be trusted at Internet scale: path-aware routing, secure inter-domain infrastructure, and, most recently, networks designed for distributed AI.</p>
@@ -154,6 +150,7 @@
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
+      <li><a href="#awards">Awards</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#teaching">Teaching</a></li>
@@ -170,7 +167,7 @@
     <div class="body">
       <p class="big">I am a Senior Scientist at ETH Zürich, where I have worked on next-generation Internet architecture since 2017, first as a postdoctoral researcher and senior assistant in Prof. Adrian Perrig's group.</p>
       <p>My work centers on SCION, a path-aware Internet architecture. I led the construction of SCIONLab, a global research testbed spanning Europe, North America, Asia and Australia, and I now help grow SCIERA, a SCION-based network for research and education institutions across three continents. Around that infrastructure, my research covers secure network virtualization, global time synchronization, carbon-aware routing, programmable network telemetry, and the interplay between networking and AI.</p>
-      <p>Before ETH, I received my Ph.D., M.S. and B.S. in Computer Science and Engineering from Korea University, where my dissertation focused on scalable botnet detection in large-scale DNS traffic. I also spent time as a research intern at Microsoft Research Asia.</p>
+      <p>Before ETH, I received my Ph.D., M.S. and B.S. in Computer Science and Engineering from Korea University, where I was advised by Prof. Heejo Lee. I also spent time as a research intern at Microsoft Research Asia.</p>
       <ul class="interests" aria-label="Research interests">
         <li>Future Internet architecture</li>
         <li>Path-aware networking</li>
@@ -194,7 +191,7 @@
       </div>
       <div class="proj">
         <h3>SCIERA: SCION Education, Research and Academic Network</h3>
-        <p>Building collaborations with national research and education networks, establishing a global ring connecting Asia, Europe and North America, and extending deployment to the Middle East, Africa and South America. <a href="#pub-sciera">SIGCOMM'25</a></p>
+        <p>Building collaborations with national research and education networks, establishing a global ring connecting Asia, Europe and North America, and extending deployment to the Middle East, Africa and South America. <a href="https://sciera.readthedocs.io/en/latest/">sciera.readthedocs.io</a> · <a href="#pub-sciera">SIGCOMM'25</a></p>
       </div>
       <div class="proj">
         <h3>Carbon-aware global routing</h3>
@@ -220,14 +217,26 @@
   </div>
 </section>
 
+<section id="awards">
+  <div class="wrap sec">
+    <h2>Awards</h2>
+    <div class="body">
+      <ol class="tl">
+        <li><span class="d">2026</span><div><div class="r">ETH Grant Award</div><div class="o">ETH Zürich</div></div></li>
+        <li><span class="d">2023</span><div><div class="r">Best Paper Award nomination</div><div class="o">ACM e-Energy · <a href="#pub-carbon">Carbon-Intelligent Global Routing in Path-Aware Networks</a></div></div></li>
+        <li><span class="d">2021</span><div><div class="r">Best Paper Award</div><div class="o">ACM CoNEXT · <a href="#pub-conext21">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</a></div></div></li>
+        <li><span class="d">2021</span><div><div class="r">Best Paper Award and Best Presentation Award</div><div class="o">IEEE/IFIP AnNet · <a href="#pub-speedcam">SpeedCam: Towards Efficient Flow Monitoring for Multipath Communication</a></div></div></li>
+        <li><span class="d">2020</span><div><div class="r">Best Paper Award</div><div class="o">IEEE ICNP · <a href="#pub-scionlab">SCIONLab: A Next-Generation Internet Testbed</a></div></div></li>
+        <li><span class="d">2014</span><div><div class="r">Best Paper Award</div><div class="o">ATIS · <a href="#pub-atis">A Scalable Approach for Vulnerability Discovery Based on Security Patches</a></div></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
 <section id="publications">
   <div class="wrap sec">
     <h2>Publications</h2>
     <div class="body">
-      <div class="pubtools" role="group" aria-label="Filter publications">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" data-filter="award" aria-pressed="false">Awards</button>
-      </div>
 
       <div id="publist">
       <h3 class="year">2026</h3>
@@ -253,7 +262,7 @@
       <h3 class="year">2023</h3>
       <ol class="pubs">
         <li class="pub"><span class="venue">USENIX Sec'23</span><div><span class="t">Did the Shark Eat the Watchdog in the NTP Pool? Deceiving the NTP Pool's Monitoring System</span><span class="a"><b>J. Kwon</b>, J. Song, J. Hur, A. Perrig</span><span class="v">USENIX Security Symposium, Aug. 2023</span></div></li>
-        <li class="pub" id="pub-carbon" data-award><span class="venue">e-Energy'23</span><div><span class="t">Carbon-Intelligent Global Routing in Path-Aware Networks</span><span class="a">S. Tabaeiaghdaei, S. Scherrer, <b>J. Kwon</b>, A. Perrig</span><span class="v">ACM e-Energy, Jun. 2023</span><span class="award">Best Paper Award nomination</span></div></li>
+        <li class="pub" id="pub-carbon"><span class="venue">e-Energy'23</span><div><span class="t">Carbon-Intelligent Global Routing in Path-Aware Networks</span><span class="a">S. Tabaeiaghdaei, S. Scherrer, <b>J. Kwon</b>, A. Perrig</span><span class="v">ACM e-Energy, Jun. 2023</span><span class="award">Best Paper Award nomination</span></div></li>
         <li class="pub"><span class="venue">SACMAT'23</span><div><span class="t">Qualitative Intention-aware Attribute-based Access Control Policy Refinement</span><span class="a">S. Mitani, <b>J. Kwon</b>, N. Ghate, T. Singh, H. Ueda, A. Perrig</span><span class="v">ACM SACMAT, Jun. 2023</span></div></li>
       </ol>
 
@@ -267,14 +276,14 @@
 
       <h3 class="year">2021</h3>
       <ol class="pubs">
-        <li class="pub" data-award><span class="venue">CoNEXT'21</span><div><span class="t">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</span><span class="a">C. Krähenbühl, S. Tabaeiaghdaei, C. Gloor, <b>J. Kwon</b>, D. Hausheer, A. Perrig, D. Roos</span><span class="v">ACM CoNEXT, Dec. 2021</span><span class="award">Best Paper Award</span></div></li>
-        <li class="pub" data-award><span class="venue">AnNet'21</span><div><span class="t">SpeedCam: Towards Efficient Flow Monitoring for Multipath Communication</span><span class="a">K. Gärtner, <b>J. Kwon</b>, D. Hausheer</span><span class="v">IEEE/IFIP Workshop on Analytics for Network and Service Management, May 2021</span><span class="award">Best Paper &amp; Best Presentation Award</span></div></li>
+        <li class="pub" id="pub-conext21"><span class="venue">CoNEXT'21</span><div><span class="t">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</span><span class="a">C. Krähenbühl, S. Tabaeiaghdaei, C. Gloor, <b>J. Kwon</b>, D. Hausheer, A. Perrig, D. Roos</span><span class="v">ACM CoNEXT, Dec. 2021</span><span class="award">Best Paper Award</span></div></li>
+        <li class="pub" id="pub-speedcam"><span class="venue">AnNet'21</span><div><span class="t">SpeedCam: Towards Efficient Flow Monitoring for Multipath Communication</span><span class="a">K. Gärtner, <b>J. Kwon</b>, D. Hausheer</span><span class="v">IEEE/IFIP Workshop on Analytics for Network and Service Management, May 2021</span><span class="award">Best Paper &amp; Best Presentation Award</span></div></li>
         <li class="pub" id="pub-mondrian"><span class="venue">NDSS'21</span><div><span class="t">MONDRIAN: Comprehensive Inter-domain Network Zoning Architecture</span><span class="a"><b>J. Kwon</b>, C. Hähni, P. Bamert, A. Perrig</span><span class="v">NDSS Symposium, Feb. 2021</span></div></li>
       </ol>
 
       <h3 class="year">2020</h3>
       <ol class="pubs">
-        <li class="pub" id="pub-scionlab" data-award><span class="venue">ICNP'20</span><div><span class="t">SCIONLab: A Next-Generation Internet Testbed</span><span class="a"><b>J. Kwon</b>, J. García-Pardo, M. Legner, F. Wirz, M. Frei, D. Hausheer, A. Perrig</span><span class="v">IEEE ICNP, Oct. 2020</span><span class="award">Best Paper Award</span></div></li>
+        <li class="pub" id="pub-scionlab"><span class="venue">ICNP'20</span><div><span class="t">SCIONLab: A Next-Generation Internet Testbed</span><span class="a"><b>J. Kwon</b>, J. García-Pardo, M. Legner, F. Wirz, M. Frei, D. Hausheer, A. Perrig</span><span class="v">IEEE ICNP, Oct. 2020</span><span class="award">Best Paper Award</span></div></li>
         <li class="pub" id="pub-svlan"><span class="venue">NDSS'20</span><div><span class="t">SVLAN: Secure &amp; Scalable Network Virtualization</span><span class="a"><b>J. Kwon</b>, T. Lee, C. Hähni, A. Perrig</span><span class="v">NDSS Symposium, Feb. 2020</span></div></li>
       </ol>
 
@@ -283,7 +292,7 @@
         <li class="pub"><span class="venue">Comput. Netw.</span><div><span class="t">PsyBoG: A Scalable Botnet Detection Method for Large-scale DNS Traffic</span><span class="a"><b>J. Kwon</b>, J. Lee, H. Lee, A. Perrig</span><span class="v">Computer Networks, vol. 97, 2016</span></div></li>
         <li class="pub"><span class="venue">Comput. Comm.</span><div><span class="t">An Incrementally Deployable Anti-spoofing Mechanism for Software-defined Networks</span><span class="a"><b>J. Kwon</b>, D. Seo, M. Kwon, H. Lee, A. Perrig, H. Kim</span><span class="v">Computer Communications, vol. 64, 2015</span></div></li>
         <li class="pub"><span class="venue">CCPE</span><div><span class="t">CLORIFI: Software Vulnerability Discovery using Code Clone Verification</span><span class="a">H. Lee, H. Kwon, <b>J. Kwon</b>, H. Lee</span><span class="v">Concurrency and Computation: Practice and Experience, 2015</span></div></li>
-        <li class="pub" data-award><span class="venue">ATIS'14</span><div><span class="t">A Scalable Approach for Vulnerability Discovery Based on Security Patches</span><span class="a">H. Li, H. Kwon, <b>J. Kwon</b>, H. Lee</span><span class="v">Applications and Techniques in Information Security, Nov. 2014</span><span class="award">Best Paper Award</span></div></li>
+        <li class="pub" id="pub-atis"><span class="venue">ATIS'14</span><div><span class="t">A Scalable Approach for Vulnerability Discovery Based on Security Patches</span><span class="a">H. Li, H. Kwon, <b>J. Kwon</b>, H. Lee</span><span class="v">Applications and Techniques in Information Security, Nov. 2014</span><span class="award">Best Paper Award</span></div></li>
         <li class="pub"><span class="venue">CNS'14</span><div><span class="t">DroidGraph: Discovering Android Malware by Analyzing Semantic Behavior</span><span class="a"><b>J. Kwon</b>, J. Jeong, J. Lee, H. Lee</span><span class="v">IEEE CNS, Oct. 2014</span></div></li>
         <li class="pub"><span class="venue">MALWARE'14</span><div><span class="t">PsyBoG: Power Spectral Density Analysis for Detecting Botnet Groups</span><span class="a"><b>J. Kwon</b>, J. Kim, J. Lee, H. Lee, A. Perrig</span><span class="v">IEEE MALWARE, Oct. 2014</span></div></li>
         <li class="pub"><span class="venue">MALWARE'14</span><div><span class="t">MysteryChecker: Unpredictable Attestation to Detect Repackaged Malicious Applications in Android</span><span class="a">J. Jeong, D. Seo, C. Lee, <b>J. Kwon</b>, H. Lee, J. Milburn</span><span class="v">IEEE MALWARE, Oct. 2014</span></div></li>
@@ -314,7 +323,7 @@
 
       <h3 class="sub">Education</h3>
       <ol class="tl">
-        <li><span class="d">2011 – 2016</span><div><div class="r">Ph.D., Computer Science and Engineering</div><div class="o">Korea University · Dissertation: A Scalable Botnet Countermeasure for Large-scale DNS Traffic</div></div></li>
+        <li><span class="d">2011 – 2016</span><div><div class="r">Ph.D., Computer Science and Engineering</div><div class="o">Korea University · Advisor: Prof. Heejo Lee</div></div></li>
         <li><span class="d">2008 – 2010</span><div><div class="r">M.S., Computer Science and Engineering</div><div class="o">Korea University</div></div></li>
         <li><span class="d">2000 – 2007</span><div><div class="r">B.S., Computer Science</div><div class="o">Korea University · Leave of absence for military service, 2002 – 2004</div></div></li>
       </ol>
@@ -354,25 +363,5 @@
   </div>
 </footer>
 
-<script>
-  (function(){
-    var btns=document.querySelectorAll('.pubtools button');
-    var pubs=document.querySelectorAll('#publist .pub');
-    btns.forEach(function(b){
-      b.addEventListener('click',function(){
-        var f=b.dataset.filter;
-        btns.forEach(function(x){x.setAttribute('aria-pressed', x===b ? 'true':'false');});
-        pubs.forEach(function(p){
-          p.hidden = f==='award' ? !p.hasAttribute('data-award') : false;
-        });
-        document.querySelectorAll('#publist .year').forEach(function(y){
-          var list=y.nextElementSibling;
-          y.hidden = !list.querySelector('.pub:not([hidden])');
-          list.hidden = y.hidden;
-        });
-      });
-    });
-  })();
-</script>
 </body>
 </html>
