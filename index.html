@@ -117,6 +117,17 @@
     .two{grid-template-columns:1fr}
   }
   @media (max-width:420px){ .wrap{padding:0 16px} }
+  /* collapsible sections */
+  .toggle{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:12px;font:inherit;color:inherit}
+  .toggle:focus-visible{outline:2px solid var(--route);outline-offset:4px;border-radius:2px}
+  .toggle:hover{color:var(--route)}
+  .chev{width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);transition:transform .2s ease;opacity:.6}
+  .toggle[aria-expanded="false"] .chev{transform:rotate(-45deg)}
+  .toggle[aria-expanded="false"]{color:var(--muted)}
+  section.collapsed{padding-bottom:0}
+  section.collapsed .sec > h2{position:static}
+  .sec > .body[hidden]{display:none}
+  @media (prefers-reduced-motion:reduce){.chev{transition:none}}
 </style>
 </head>
 <body>
@@ -163,8 +174,8 @@
 
 <section id="about">
   <div class="wrap sec">
-    <h2>About</h2>
-    <div class="body">
+    <h2><button type="button" class="toggle" aria-expanded="true" aria-controls="about-body">About<span class="chev" aria-hidden="true"></span></button></h2>
+    <div id="about-body" class="body">
       <p class="big">I am a Senior Scientist at ETH Zürich, where I have worked on next-generation Internet architecture since 2017, first as a postdoctoral researcher and senior assistant in Prof. Adrian Perrig's group.</p>
       <p>My work centers on SCION, a path-aware Internet architecture. I led the construction of SCIONLab, a global research testbed spanning Europe, North America, Asia and Australia, and I now help grow SCIERA, a SCION-based network for research and education institutions across three continents. Around that infrastructure, my research covers secure network virtualization, global time synchronization, carbon-aware routing, programmable network telemetry, and the interplay between networking and AI.</p>
       <p>Before ETH, I received my Ph.D., M.S. and B.S. in Computer Science and Engineering from Korea University, where I was advised by Prof. Heejo Lee. I also spent time as a research intern at Microsoft Research Asia.</p>
@@ -183,8 +194,8 @@
 
 <section id="research">
   <div class="wrap sec">
-    <h2>Research</h2>
-    <div class="body">
+    <h2><button type="button" class="toggle" aria-expanded="true" aria-controls="research-body">Research<span class="chev" aria-hidden="true"></span></button></h2>
+    <div id="research-body" class="body">
       <div class="proj">
         <h3>Networking for AI, AI for networking</h3>
         <p>Convergence-aware optimization of distributed AI training across data centres, ML-based prediction of path dynamics with intent-driven path selection, and sovereign, verifiable network infrastructure for federated AI.</p>
@@ -219,13 +230,12 @@
 
 <section id="awards">
   <div class="wrap sec">
-    <h2>Awards</h2>
-    <div class="body">
+    <h2><button type="button" class="toggle" aria-expanded="true" aria-controls="awards-body">Awards<span class="chev" aria-hidden="true"></span></button></h2>
+    <div id="awards-body" class="body">
       <ol class="tl">
         <li><span class="d">2026</span><div><div class="r">ETH Grant Award</div><div class="o">ETH Zürich</div></div></li>
         <li><span class="d">2023</span><div><div class="r">Best Paper Award nomination</div><div class="o">ACM e-Energy · <a href="#pub-carbon">Carbon-Intelligent Global Routing in Path-Aware Networks</a></div></div></li>
-        <li><span class="d">2021</span><div><div class="r">Best Paper Award</div><div class="o">ACM CoNEXT · <a href="#pub-conext21">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</a></div></div></li>
-        <li><span class="d">2021</span><div><div class="r">Best Paper Award and Best Presentation Award</div><div class="o">IEEE/IFIP AnNet · <a href="#pub-speedcam">SpeedCam: Towards Efficient Flow Monitoring for Multipath Communication</a></div></div></li>
+        <li><span class="d">2021</span><div><div class="r">Best Paper Award and Best Presentation Award</div><div class="o">ACM CoNEXT · <a href="#pub-conext21">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</a></div></div></li>
         <li><span class="d">2020</span><div><div class="r">Best Paper Award</div><div class="o">IEEE ICNP · <a href="#pub-scionlab">SCIONLab: A Next-Generation Internet Testbed</a></div></div></li>
         <li><span class="d">2014</span><div><div class="r">Best Paper Award</div><div class="o">ATIS · <a href="#pub-atis">A Scalable Approach for Vulnerability Discovery Based on Security Patches</a></div></div></li>
       </ol>
@@ -235,8 +245,8 @@
 
 <section id="publications">
   <div class="wrap sec">
-    <h2>Publications</h2>
-    <div class="body">
+    <h2><button type="button" class="toggle" aria-expanded="true" aria-controls="publications-body">Publications<span class="chev" aria-hidden="true"></span></button></h2>
+    <div id="publications-body" class="body">
 
       <div id="publist">
       <h3 class="year">2026</h3>
@@ -276,8 +286,8 @@
 
       <h3 class="year">2021</h3>
       <ol class="pubs">
-        <li class="pub" id="pub-conext21"><span class="venue">CoNEXT'21</span><div><span class="t">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</span><span class="a">C. Krähenbühl, S. Tabaeiaghdaei, C. Gloor, <b>J. Kwon</b>, D. Hausheer, A. Perrig, D. Roos</span><span class="v">ACM CoNEXT, Dec. 2021</span><span class="award">Best Paper Award</span></div></li>
-        <li class="pub" id="pub-speedcam"><span class="venue">AnNet'21</span><div><span class="t">SpeedCam: Towards Efficient Flow Monitoring for Multipath Communication</span><span class="a">K. Gärtner, <b>J. Kwon</b>, D. Hausheer</span><span class="v">IEEE/IFIP Workshop on Analytics for Network and Service Management, May 2021</span><span class="award">Best Paper &amp; Best Presentation Award</span></div></li>
+        <li class="pub" id="pub-conext21"><span class="venue">CoNEXT'21</span><div><span class="t">Deployment and Scalability of an Inter-Domain Multi-Path Routing Infrastructure</span><span class="a">C. Krähenbühl, S. Tabaeiaghdaei, C. Gloor, <b>J. Kwon</b>, D. Hausheer, A. Perrig, D. Roos</span><span class="v">ACM CoNEXT, Dec. 2021</span><span class="award">Best Paper &amp; Best Presentation Award</span></div></li>
+        <li class="pub"><span class="venue">AnNet'21</span><div><span class="t">SpeedCam: Towards Efficient Flow Monitoring for Multipath Communication</span><span class="a">K. Gärtner, <b>J. Kwon</b>, D. Hausheer</span><span class="v">IEEE/IFIP Workshop on Analytics for Network and Service Management, May 2021</span></div></li>
         <li class="pub" id="pub-mondrian"><span class="venue">NDSS'21</span><div><span class="t">MONDRIAN: Comprehensive Inter-domain Network Zoning Architecture</span><span class="a"><b>J. Kwon</b>, C. Hähni, P. Bamert, A. Perrig</span><span class="v">NDSS Symposium, Feb. 2021</span></div></li>
       </ol>
 
@@ -311,8 +321,8 @@
 
 <section id="experience">
   <div class="wrap sec">
-    <h2>Experience</h2>
-    <div class="body">
+    <h2><button type="button" class="toggle" aria-expanded="true" aria-controls="experience-body">Experience<span class="chev" aria-hidden="true"></span></button></h2>
+    <div id="experience-body" class="body">
       <ol class="tl">
         <li><span class="d">2024 – present</span><div><div class="r">Senior Scientist</div><div class="o">ETH Zürich, Switzerland</div></div></li>
         <li><span class="d">2020 – 2024</span><div><div class="r">Senior Assistant (Established Researcher I &amp; II)</div><div class="o">ETH Zürich, Switzerland</div></div></li>
@@ -336,8 +346,8 @@
 
 <section id="teaching">
   <div class="wrap sec">
-    <h2>Teaching</h2>
-    <div class="body">
+    <h2><button type="button" class="toggle" aria-expanded="true" aria-controls="teaching-body">Teaching<span class="chev" aria-hidden="true"></span></button></h2>
+    <div id="teaching-body" class="body">
         <ul class="plain">
           <li>Computer Networks <span class="m">ETH Zürich, Spring 2024, 2025</span></li>
           <li>Current Topics in Information Security <span class="m">ETH Zürich, Fall 2019 – 2023</span></li>
@@ -363,5 +373,27 @@
   </div>
 </footer>
 
+<script>
+  (function(){
+    function setOpen(btn, open){
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+      btn.closest('section').classList.toggle('collapsed', !open);
+    }
+    document.querySelectorAll('.toggle').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        setOpen(btn, btn.getAttribute('aria-expanded') !== 'true');
+      });
+    });
+    // opening a section from the menu or an in-page link expands it first
+    document.addEventListener('click', function(e){
+      var a = e.target.closest('a[href^="#"]'); if(!a) return;
+      var target = document.querySelector(a.getAttribute('href')); if(!target) return;
+      var sec = target.closest('section'); if(!sec) return;
+      var btn = sec.querySelector('.toggle');
+      if(btn && btn.getAttribute('aria-expanded') === 'false') setOpen(btn, true);
+    });
+  })();
+</script>
 </body>
 </html>
